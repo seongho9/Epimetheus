@@ -1,7 +1,12 @@
 <p align='center'>
  <img src="./resources/favicon.ico">
 
- 
+# 구현내용
+- 각 단계별 코드를 실행하는 부분을 구현(Web API 인 web worker 이용)
+- 각 단계별 코드 등록 시 해당 코드의 유효성을 검증 구현 및 도커 이미지화
+- react.js를 이용한 웹페이지 구현
+
+
 # EPIMETHEUS
 
 > 목표 달성을 위한 과정을 생성하고 실현하는 자동화된 AI 플랫폼, EPIMETHEUS입니다. </br>
