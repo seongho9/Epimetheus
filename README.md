@@ -1,8 +1,6 @@
 <p align='center'>
  <img src="./resources/favicon.ico">
- 
- <a href="https://www.epimetheus.store">Try It Out : https://www.epimetheus.store</a>
-</p>
+
  
 # EPIMETHEUS
 
