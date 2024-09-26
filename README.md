@@ -83,38 +83,5 @@ It provides responses to the Tasks requested by the user. The response consists 
 
 ![image](https://github.com/UOS-CSDESIGN/Epimetheus/assets/43626362/5b8f585b-e896-4baa-bdad-75eb894ade76)
 
-
-## 내부 구조(Architecture)
-![인프라구조도](https://github.com/UOS-CSDESIGN/Epimetheus/assets/43626362/4ec4ecbd-af34-4cb1-8213-98b67386856d)
-
-**FastAPI**와 **Spring Boot** 서버로 구성되어 있습니다.<br/>
-The system is comprised of FastAPI and Spring Boot servers.
-- `FastAPI 내부에는 Llama LLM이 탑재되어 있습니다.`<br/>Inside FastAPI, the Llama LLM is integrated.
-- `Kubernetes를 통한 FastAPI 서버의 로드밸런싱이 지원됩니다.`<br/>Load balancing of the FastAPI server is supported through Kubernetes.
-- `JAVA 17, Spring Boot 3.1.3을 기반으로 작성되었습니다.`<br/>It is written based on JAVA 17, Spring Boot 3.1.3.
-- `Spring 인스턴스 내부에는 Docker가 Node.js 서버를 실행하고 있어, JS코드 유효성 검사의 역할을 합니다.`<br/>Inside the Spring instance, Docker is running a Node.js server, which performs the role of validating JS code.
-
-<br/>
-
-**MongoDB Storage**는 외부에서 접근할 수 없습니다.<br/>MongoDB Storage is not accessible from outside.
-- `VPC내에서 Subnet을 분리하여 외부 접근을 차단했습니다.`<br/>MongoDB Storage is not accessible from outside.
-- `주요 자산인 Code를 저장할 수 있습니다.`<br/>It can store key assets such as Code.
-
-
-<br/>
-
-**Nginx**는 Spring 서버로 전달할지, 프록시로 외부 API 호출의 기능을 할지 결정합니다.<br/>Nginx decides whether to forward to a Spring server or act as a proxy for external API calls.
-- `api.epimetheus.store 도메인으로의 접근은 Spring Server로 전달합니다.`<br/>Access to the api.epimetheus.store domain is forwarded to the Spring Server.
-- `proxy.epimetheus.store 도메인으로의 접근은 뒤의 파라미터의 API로 프록시 전달을 함으로써 CORS문제를 해결합니다.`<br/>Access to the proxy.epimetheus.store domain resolves the CORS issue by proxying the request to the API of the subsequent parameters.
-
-
-<br/>
-
-**Jenkins**를 통한 CI/CD Automation이 구축되어 있습니다.<br/>CI/CD Automation through Jenkins has been established.
-- `Github Webhook을 이용하여 코드의 변경을 능동적으로 감지합니다.`<br/>Code changes are actively detected using GitHub Webhooks.
-- `Jenkins는 일반 사용자가 접근할 수 없습니다.`<br/>Jenkins is not accessible to regular users.
-- `Client Side App(React)는 S3에서 정적 호스팅됩니다.`<br/>The Client Side App (React) is statically hosted on S3.
-- `Server Side API Server(SpringBoot)는 CodeDeploy를 통해 배포됩니다.`<br/>The Server Side API Server (SpringBoot) is deployed through CodeDeploy.
-
 ## 기술 스택(Tech)
 <img src="https://img.shields.io/badge/v3.1.3-springboot-6cb52d?logo=springboot"> <img src="https://img.shields.io/badge/v4.9.5-typescript-3078c6?logo=typescript"> <img src="https://img.shields.io/badge/v2.414.2-jenkins-f56f3c?logo=jenkins&logoColor=white"> <img src="https://img.shields.io/badge/v5.0.21-mongodb-004e3d?logo=mongodb"> <img src="https://img.shields.io/badge/v1.18.0-nginx-009639?logo=nginx"> <img src="https://img.shields.io/badge/v24.0.7-docker-2496ED?logo=docker">
